@@ -1,0 +1,506 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat:400,700,900&display=swap');
+
+*{
+  box-sizing: border-box;
+  font-family: 'Montserrat', sans-serif;
+}
+
+$l-purple-one: #EDEAFF;
+$l-purple-two: #8D7EE8;
+$l-purple-three: #6474DD;
+$l-purple-four: #516FD8;
+$l-purple-five: #6064C2;
+$d-purple: #504666;
+$white: #fff;
+
+
+body{
+  margin: 0;
+}
+
+h1, h2, h3, h4, h5, h6, p{
+  margin-top: 0;
+}
+
+a{
+  text-decoration: none;
+}
+
+button{
+  display: block;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+button:focus, input:focus, textarea:focus, select:focus{
+  outline: none !important;
+}
+
+input, textarea, img{
+  display: block;
+  font-weight: 600;
+}
+
+.fade-enter{
+  opacity: 0;
+  z-index: 1;
+}
+
+.fade-enter.fade-enter-active{
+  opacity: 1;
+  transition: opacity 250ms ease-in;
+}
+
+// Navbar
+
+.navbar{
+  background: linear-gradient(to right, $l-purple-four, $l-purple-two);
+
+ .container{
+  display: flex;
+  width: 90%;
+  margin: 0 auto;
+
+  .nav-brand{
+    flex: 2;
+    display: flex;
+    align-items: center;
+
+    a{
+      color: #fff;
+      font-weight: bold;
+    }
+  }
+  .nav-right{
+    flex: 1;
+    display: flex;
+    justify-content: flex-end;
+
+    .register, .log-in, .log-out, .welcomeMsg{
+      display: flex;
+
+      .register-btn, .login-btn, .logout-btn{
+        background: transparent;
+        padding: 1.5rem 1rem;
+        color: #fff;
+        border: 0;
+        text-transform: uppercase;
+        font-size: 0.8rem;
+        position: relative;
+        z-index: 1;
+        transition: color 0.5s;
+
+        &:after{
+          content: '';
+          position: absolute;
+          bottom: 0;
+          left: 0;
+          background: #fff;
+          width: 100%;
+          height: 0%;
+          z-index: -1;
+          transition: height 0.5s;
+        }
+
+        &:hover{
+          color: $l-purple-four;
+        }
+
+        &:hover:after{
+          height: 100%;
+        }
+      }
+
+      .register-btn, .logout-btn{
+        font-size: 1rem;
+      }
+
+      .modal-content{
+        margin: 1rem;
+        padding: 1rem;
+        border-radius: 3px;
+
+        .close{
+          background: transparent;
+          border: 2px solid #fff;
+          color: #fff;
+          border-radius: 50%;
+          padding: 0.1rem 0.4rem;
+
+          &:hover, &:active{
+            background: #fff;
+            color: $l-purple-three;
+          }
+        }
+
+        h1{
+          color: #fff;
+          font-size: 1.5rem;
+          margin-top: 0.5rem;
+          width: 70%;
+          text-transform: uppercase;
+        }
+
+        form{
+          label{
+            color: #fff;
+            font-weight: 600;
+          }
+          input{
+            color: $d-purple;
+            width: 100%;
+            margin: 0.5rem 0;
+            border: 0;
+            border-radius: 3px;
+            border-left: 4px solid $l-purple-two;
+            padding: 0.3rem;
+
+            &::placeholder{
+              font-weight: 400;
+              opacity: 0.4;
+            }
+          }
+
+          button{
+            margin-top: 1rem;
+            width: 100%;
+            text-transform: uppercase;
+            border: 0;
+            color: $l-purple-four;
+            border-radius: 3px;
+            background: #fff;
+            padding: 0.3rem 0;
+
+            &:hover, &:active{
+              background: $l-purple-one;
+            }
+          }
+        }
+      }
+    }
+
+    .welcomeMsg{
+      justify-content: center;
+      align-items: center;
+
+      p{
+        font-size: 0.8rem;
+        margin: 0;
+        font-weight: 600;
+        color: #fff;
+        padding: 0 0.3rem;
+      }
+    }
+
+    .register-modal, .login-modal{
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100vh;
+      width: 100%;
+      background: rgba(0, 0, 0, 0.5);
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 1s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 2;
+
+      h3{
+        background: #fff;
+        color: salmon;
+        margin: 1rem 0;
+        padding: 0.5rem;
+        border-radius: 3px;
+      }
+
+      .modal-content{
+        background: $l-purple-three;
+        position: relative;
+        button:first-child{
+          display: block;
+          margin-left: auto;
+        }
+      }
+    }
+    
+    .show{
+      opacity: 1;
+      visibility: visible;
+    }
+  }
+ }
+}
+
+// Home
+.home{
+  background: $l-purple-one;
+  height: calc(100vh - 4.1875rem);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0 3rem;
+
+  .header{
+    flex: 1;
+    h1 {
+      font-weight: 900;
+      background-image: -webkit-linear-gradient(left, $l-purple-three, $l-purple-four);
+      background-clip: text;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      font-size: 3.5rem;
+      margin-bottom: 0.5rem;
+    }
+    h2{
+      line-height: 1.5;
+      color: $d-purple;
+      span{
+        color: $l-purple-three;
+        font-weight: 900;
+        font-size: 1.8rem;
+        border-radius: 3px;
+      }
+    }
+
+    a{
+      display: inline-block;
+      color: $l-purple-three;
+      font-weight: 900;
+      border: 5px solid $l-purple-three;
+      padding: 0.4rem;
+      position: relative;
+      z-index: 1;
+      transition: color 0.5s;
+
+      &:after{
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 0%;
+        height: 100%;
+        content: '';
+        background: linear-gradient(to right, $l-purple-three, $l-purple-four);
+        z-index: -1;
+        transition: width 0.5s;
+      }
+
+      &:hover{
+        color: #fff;
+      }
+
+      &:hover:after{
+        width: 100%;
+      }
+    }
+  }
+
+  .svg{
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    svg{
+      width: 100%;
+      animation-name: svgAnim;
+      animation-duration: 2s;
+      clip-path: circle(100% at 50% 50%);
+    }
+  }
+}
+
+// Posts
+
+.add-post{
+  background: $l-purple-three;
+  width: 70%;
+  padding: 1rem;
+  color: #fff;
+  margin: 1rem auto;
+  border-radius: 3px;
+
+  form{
+    p{
+      background: #fff;
+      color: salmon;
+      font-weight: 600;
+      padding: 0.5rem;
+      border-radius: 3px;
+    }
+
+    input{
+      margin: 1rem 0;
+      border: 0;
+      border-radius: 3px;
+      padding: 0.3rem 0;
+      background: transparent;
+      border-bottom: 2px solid #fff;
+      color: #fff;
+
+      &::placeholder{
+        font-weight: 400;
+        opacity: 1;
+        color: #fff;
+      }
+    }
+
+    textarea{
+      resize: none;
+      border: 0;
+      border-radius: 3px;
+      padding: 0.3rem;
+      background: $l-purple-five;
+      border-bottom: 2px solid #fff;
+      color: #fff;
+
+      &::placeholder{
+        font-weight: 400;
+        opacity: 1;
+        color: #fff;
+      }
+    }
+
+    input{
+      width: 50%;
+    }
+
+    textarea{
+      width: 100%;
+    }
+
+    button{
+      margin-top: 1rem;
+      width: 100%;
+      text-transform: uppercase;
+      border: 0;
+      color: $l-purple-four;
+      border-radius: 3px;
+      background: #fff;
+      padding: 0.3rem 0;
+
+      &:hover, &:active{
+        background: $l-purple-one;
+      }
+    }
+  }
+}
+
+.post-list{
+  width: 90%;
+  margin: 2rem auto;
+  background: $l-purple-five;
+
+  .loader{
+    padding: 1rem;
+    display: flex;
+    justify-content: center;
+  }
+
+  .post{
+    background: $l-purple-one;
+    color: $l-purple-five;
+    margin: 1.5rem 0;
+    padding: 1rem;
+    animation-name: animatePost;
+    animation-duration: 1s;
+    
+    h1{
+      text-transform: capitalize;
+    }
+
+    h2{
+      text-align: right;
+      font-size: 1rem;
+    }
+
+    span{
+      margin-left: 2rem;
+    }
+
+    button{
+      margin-left: auto;
+      border: 0;
+      padding: 0.3rem 0.8rem;
+      background: $l-purple-five;
+      color: $white;
+      border-radius: 3px;
+
+      &:hover, &:active{
+        background: lighten($l-purple-five, 5%);
+      }
+    }
+  }
+}
+
+// Media queries
+@media(max-width: 768px){
+  .navbar{
+    .container{
+      flex-direction: column;
+
+      .nav-brand{
+        a{
+          padding: 1.5rem 1rem;
+        }
+      }
+    }
+  }
+
+  .home{
+    height: calc(100vh - 8.375rem);
+    .svg{
+      display: none;
+    }
+  }
+}
+
+@media(max-width: 500px){
+  .home{
+    .header{
+      h1{
+        font-size: 2.8rem;
+      }
+      h2{
+        font-size: 1.2rem;
+      }
+    }
+  }
+  .add-post{
+    width: 90%;
+    form{
+      input{
+        width: 100%;
+      }
+    }
+  }
+  .post-list{
+    .post{
+      h1{
+        font-size: 1.8rem;
+        margin-bottom: 0.5rem;
+      }
+      button{
+        margin-bottom: 1rem;
+        font-size: 0.8rem;
+      }
+    }
+  }
+}
+
+@keyframes svgAnim{
+  0%{clip-path: circle(10% at 50% 50%); width: 90%;}
+  100%{clip-path: circle(100% at 50% 50%); width: 100%;}
+}
+
+@keyframes animatePost{
+  0%{
+    opacity: 0;
+    transform: translateX(-50%);
+  }
+  100%{
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
